@@ -1,5 +1,5 @@
 PFont myFont; 
-size(500,500); 
+size(500,400); 
 background(255);
 
 fill(127,0,0);
