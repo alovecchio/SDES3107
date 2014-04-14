@@ -13,7 +13,4 @@ ellipseSize -= 10;
 ellipse(pos, pos, ellipseSize, ellipseSize);
 pos +=20; 
 ellipseSize -= 10;
-ellipse(pos, pos, ellipseSize, ellipseSize);
-pos +=20; 
-ellipseSize -= 10;
 
