@@ -1,14 +1,14 @@
-//load a picture of an animal
-background(0);
-size(500,500); 
+//load 2 pictures of an animal
+background(255);
+size(700,700); 
 
 PImage img;
 img = loadImage("turtle.jpg"); 
-tint(800,200,100);
-image(img, 50, 0);
+image(img, 30, 20);
 
 
 img = loadImage("seahorse.jpg"); 
-tint(300,100,0);
-image(img, 100, 300);
 
+image(img, 300, 350, width/2, height/2);
+
+//tint(800,200,100); tint(300,100,0);//
