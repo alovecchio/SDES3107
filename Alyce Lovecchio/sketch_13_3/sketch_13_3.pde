@@ -1,9 +1,9 @@
 PFont myFont; 
 size(500,500); 
-background(200);
+background(255);
 
 fill(127,0,0);
-myFont = loadFont("Bauhaus93-48.vlw");
+myFont = loadFont("Verdana-48.vlw");
 textFont(myFont);
 text("imagination", 50, 80);
 
@@ -18,6 +18,6 @@ textFont(myFont);
 text("important than", 120, 230);
 
 fill(127,0,0);
-myFont = loadFont("Bauhaus93-48.vlw");
+myFont = loadFont("Verdana-48.vlw");
 textFont(myFont);
 text("knowledge", 180, 350);
