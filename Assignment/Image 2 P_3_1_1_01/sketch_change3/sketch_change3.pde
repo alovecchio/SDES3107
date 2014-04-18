@@ -33,28 +33,27 @@ import java.util.Calendar;
 
 boolean doSave = false;
 
-String textTyped = "Type slow and fast!";
+String textTyped = "Longer=bigger Shorter=smaller";
 float[] fontSizes = new float[textTyped.length()];
-float minFontSize = 15;
-float maxFontSize = 800;
+float minFontSize = 20;
+float maxFontSize = 1000;
 float newFontSize = 0;
 
 int pMillis;
 float maxTimeDelta = 5000.0;
 
-float spacing = 2; // line height
-float tracking = 0; // between letters
+float spacing = 5; // line height
+float tracking = 10; // between letters
 PFont font;
 
 
 
 void setup() {
-  size(800, 600);
+  size(500, 600);
   // make window resizable
   frame.setResizable(true);
-
-  font = createFont("Arial", 10);
-
+  font = loadFont("babe48.vlw");
+  font = createFont("babe48.vlw", 10);
   smooth();
   noCursor();
 
@@ -77,12 +76,14 @@ void draw() {
   spacing = map(mouseY, 0, height, 0, 120);
   translate(0, 5+spacing);
 
-  float x = 0, y = 0, fontSize = 20;
+  float x = 0, y = 0, fontSize = 50;
 
   for (int i = 0; i < textTyped.length(); i++) {
     // get fontsize for the actual letter from the array
     fontSize = fontSizes[i];
     textFont(font, fontSize);
+    fill(255); 
+    rotate(PI/4); 
     char letter = textTyped.charAt(i);
     float letterWidth = textWidth(letter) + tracking;
 
@@ -156,4 +157,4 @@ String timestamp() {
 }
 
 
-//Change background colour and blinking curser colour and size 
+//Make the text type in a direction direction by rotating it. Curser moves text
