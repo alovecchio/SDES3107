@@ -26,7 +26,7 @@
  * s                   : save png
  * p                   : save pdf
  */
- 
+
 import processing.opengl.*;
 import processing.pdf.*;
 import java.util.Calendar;
@@ -34,36 +34,35 @@ import java.util.Calendar;
 boolean savePDF = false;
 
 float tileCount = 20;
-color moduleColor = color(255);
-int moduleAlpha = 180;
+color moduleColor = color(200);
+int moduleAlpha = 50;
 int actRandomSeed = 0;
-int max_distance = 800; 
+int max_distance = 600; 
 
-void setup(){
-  size(800, 800, OPENGL);
+void setup() {
+  size(600, 600, OPENGL);
 }
 
 void draw() {
   if (savePDF) beginRaw(PDF, timestamp()+".pdf");
 
-  background(255,220,230);
-  smooth();
-  noFill();
+  background(48,129,150);
+  fill(40,139,206);
 
   randomSeed(actRandomSeed);
 
   stroke(moduleColor, moduleAlpha);
-  strokeWeight(2);
+  strokeWeight(1);
 
   for (int gridY=0; gridY<width; gridY+=25) {
     for (int gridX=0; gridX<height; gridX+=25) {
 
       float diameter = dist(mouseX, mouseY, gridX, gridY);
-      diameter = diameter/max_distance * 40;
+      diameter = diameter/max_distance * 10 ;
       pushMatrix();
-      translate(gridX, gridY, diameter*10);
-      rect(10, 50, 100, 30);   
-      popMatrix(); 
+      translate(gridX, gridY, diameter*5);
+      ellipse(10, 10, diameter * 2, diameter);    
+      popMatrix();
     }
   }
 
@@ -74,10 +73,10 @@ void draw() {
 }
 
 void mousePressed() {
-  actRandomSeed = (int) random(100000);
+  actRandomSeed = (int) random(100);
 }
 
-void keyReleased(){
+void keyReleased() {
   if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
   if (key == 'p' || key == 'P') savePDF = true;
 }
@@ -88,4 +87,6 @@ String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
 
+
+//Changed colour of background and shape. Changed lightness of shape outline colour. Changed size of shape. Changed spacing between each shape
 

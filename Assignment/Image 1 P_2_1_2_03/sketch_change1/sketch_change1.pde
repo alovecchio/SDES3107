@@ -34,7 +34,7 @@ import java.util.Calendar;
 boolean savePDF = false;
 
 float tileCount = 20;
-color moduleColor = color(255,20,20);
+color moduleColor = color(0);
 int moduleAlpha = 180;
 int actRandomSeed = 0;
 int max_distance = 500; 
@@ -48,22 +48,21 @@ void draw() {
 
   background(255);
   smooth();
-  fill(0);
+  noFill();
 
   randomSeed(actRandomSeed);
 
-  stroke(moduleColor/2, moduleAlpha);
-  strokeWeight(4);
+  stroke(moduleColor, moduleAlpha);
+  strokeWeight(1);
 
-  for (int gridY=0; gridY<width; gridY+=55) {
-    for (int gridX=0; gridX<height; gridX+=55) {
+  for (int gridY=0; gridY<width; gridY+=20) {
+    for (int gridX=0; gridX<height; gridX+=20) {
 
       float diameter = dist(mouseX, mouseY, gridX, gridY);
-      diameter = diameter/max_distance * 50;
+      diameter = diameter/max_distance * 40;
       pushMatrix();
-      translate(gridX, gridY, diameter*10);
-      rotate(PI/4);
-      rect(30, 30, 40, 40);  
+      translate(gridX, gridY, diameter*5);
+      ellipse(0, 0, diameter * 2, diameter * 2);
       popMatrix();
     }
   }
@@ -89,4 +88,8 @@ String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
 
+
+/*Change to ellipses and changed size and diameter width, and stroke weight of ellipses. 
+Made the size of the grid bigger so that ellipses are closer together
+*/
 

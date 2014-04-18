@@ -34,10 +34,10 @@ import java.util.Calendar;
 boolean savePDF = false;
 
 float tileCount = 20;
-color moduleColor = color(200);
-int moduleAlpha = 50;
+color moduleColor = color(255,20,20);
+int moduleAlpha = 180;
 int actRandomSeed = 0;
-int max_distance = 600; 
+int max_distance = 500; 
 
 void setup() {
   size(600, 600, OPENGL);
@@ -46,22 +46,24 @@ void setup() {
 void draw() {
   if (savePDF) beginRaw(PDF, timestamp()+".pdf");
 
-  background(48,129,150);
-  fill(40,139,206);
+  background(255);
+  smooth();
+  fill(0);
 
   randomSeed(actRandomSeed);
 
-  stroke(moduleColor, moduleAlpha);
-  strokeWeight(1);
+  stroke(moduleColor/2, moduleAlpha);
+  strokeWeight(4);
 
-  for (int gridY=0; gridY<width; gridY+=25) {
-    for (int gridX=0; gridX<height; gridX+=25) {
+  for (int gridY=0; gridY<width; gridY+=55) {
+    for (int gridX=0; gridX<height; gridX+=55) {
 
       float diameter = dist(mouseX, mouseY, gridX, gridY);
-      diameter = diameter/max_distance * 10 ;
+      diameter = diameter/max_distance * 50;
       pushMatrix();
-      translate(gridX, gridY, diameter*5);
-      ellipse(10, 10, diameter * 2, diameter);    
+      translate(gridX, gridY, diameter*10);
+      rotate(PI/4);
+      rect(30, 30, 40, 40);  
       popMatrix();
     }
   }
@@ -73,7 +75,7 @@ void draw() {
 }
 
 void mousePressed() {
-  actRandomSeed = (int) random(100);
+  actRandomSeed = (int) random(100000);
 }
 
 void keyReleased() {
@@ -87,6 +89,4 @@ String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
 
-
-
-
+//Changed color and line of rectangle, changed shape and size of rectangle. Rotated rectangle and changed the diameter hen moving curser around 
